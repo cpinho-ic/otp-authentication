@@ -1,0 +1,27 @@
+{
+    "name": "otp-authentication",
+    "version": "0.0.1",
+    "description": "Typed package that allows the for the generation, sending and verifying an OTP token",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "scripts": {
+        "build": "tsup",
+        "code:fix": "biome check --apply ."
+    },
+    "keywords": ["OTP", "redis", "nodemailer"],
+    "author": "Carlos Pinho <cpinho@imaginarycloud.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "@biomejs/biome": "^1.7.0",
+        "@types/nodemailer": "6.4.14",
+        "@types/otp-generator": "4.0.2",
+        "tsup": "^8.0.2",
+        "typescript": "^5.4.5"
+    },
+    "dependencies": {
+        "nodemailer": "6.9.13",
+        "otp-generator": "4.0.1",
+        "redis": "4.6.13"
+    }
+}

@@ -1,0 +1,1 @@
+export type OTPGeneratorFunction = () => string;
