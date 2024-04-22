@@ -13,37 +13,31 @@ export class RedisCacheService implements CacheServiceAbstract {
         this.prefix = options.prefix;
     }
 
+    private async connectClient(): Promise<void> {
+        while (!this.client.isReady) {
+            await this.client.connect();
+        }
+    }
+
     private getKey(key: string): string {
         return `${this.prefix}otp_request_${key}`;
     }
 
     async set(key: string, otp: string, ttl?: number): Promise<void> {
-        // TODO better this
-        while (!this.client.isReady) {
-            await this.client.connect();
-        }
-
+        this.connectClient();
         await this.client.set(this.getKey(key), otp, {
             EX: ttl,
         });
     }
 
     async get(key: string): Promise<string | undefined> {
-        // TODO better this
-        while (!this.client.isReady) {
-            await this.client.connect();
-        }
-
+        this.connectClient();
         const result = await this.client.get(this.getKey(key));
         return result ?? undefined;
     }
 
     async delete(key: string): Promise<void> {
-        // TODO better this
-        while (!this.client.isReady) {
-            await this.client.connect();
-        }
-
+        this.connectClient();
         await this.client.del(this.getKey(key));
     }
 }
