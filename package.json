@@ -9,7 +9,11 @@
         "build": "tsup",
         "code:fix": "biome check --apply ."
     },
-    "keywords": ["OTP", "redis", "nodemailer"],
+    "keywords": [
+        "OTP",
+        "redis",
+        "nodemailer"
+    ],
     "author": "Carlos Pinho <cpinho@imaginarycloud.com>",
     "license": "MIT",
     "devDependencies": {
@@ -22,6 +26,7 @@
     "dependencies": {
         "nodemailer": "6.9.13",
         "otp-generator": "4.0.1",
-        "redis": "4.6.13"
+        "redis": "4.6.13",
+        "twilio": "^5.0.4"
     }
 }
