@@ -1,6 +1,7 @@
 /src
 /node_modules
 /.vscode
+/.husky
 
 .env
 .DS_Store
