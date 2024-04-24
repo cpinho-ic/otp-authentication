@@ -15,19 +15,19 @@ export class OTPAuthentication {
         this.deliveryService = deliveryService;
     }
 
-    async request(email: string, ttl?: number): Promise<void> {
+    async request(to: string, ttl?: number): Promise<void> {
         const otp = this.otpGenerator();
-        await this.cacheService.set(email, otp, ttl);
-        await this.deliveryService.send(email, otp);
+        await this.cacheService.set(to, otp, ttl);
+        await this.deliveryService.send(to, otp);
     }
 
-    async verify(email: string, otp: string): Promise<boolean> {
-        const savedOtp = await this.cacheService.get(email);
+    async verify(to: string, otp: string): Promise<boolean> {
+        const savedOtp = await this.cacheService.get(to);
         if (savedOtp !== otp) {
             return false;
         }
 
-        await this.cacheService.delete(email);
+        await this.cacheService.delete(to);
         return true;
     }
 }
