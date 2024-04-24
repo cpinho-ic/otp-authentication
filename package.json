@@ -1,6 +1,6 @@
 {
     "name": "otp-authentication",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Typed package that allows the for the generation, sending and verifying an OTP token",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",

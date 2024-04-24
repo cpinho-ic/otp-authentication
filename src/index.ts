@@ -1,10 +1,9 @@
+import { type MailOptions, NodemailerDeliveryService, type NodemailerDeliveryServiceOptions } from './lib/nodemailer-delivery-service';
 import { RedisCacheService, type RedisCacheServiceOptions } from './lib/redis-cache-service';
+import { TwilioDeliveryService, type TwilioOpts } from './lib/twilio-delivery-service';
 
-import { NodemailerDeliveryService, type NodemailerDeliveryServiceOptions, type MailOptions } from './lib/nodemailer-delivery-service';
 import { OTPAuthentication } from './lib/otp-authentication';
-
 import { generate } from 'otp-generator';
-import { TwilioDeliveryService, type TwilioOpts } from './lib/sms-delivery-service';
 
 export class EmailOTPAuthentication extends OTPAuthentication {
     constructor(
@@ -30,3 +29,4 @@ export class SMSOTPAuthentication extends OTPAuthentication {
 }
 
 export * from './@types';
+export * from './lib';
