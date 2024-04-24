@@ -10,6 +10,10 @@
         "code:fix": "biome check --apply ."
     },
     "keywords": ["OTP", "redis", "nodemailer", "twilio", "SMS", "Email"],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/cpinho-ic/otp-authentication.git"
+    },
     "author": "Carlos Pinho <cpinho@imaginarycloud.com>",
     "license": "MIT",
     "devDependencies": {
