@@ -12,6 +12,26 @@ By default, it utilizes the [otp-generator](https://www.npmjs.com/package/otp-ge
 and [Twilio](https://www.npmjs.com/package/twilio) for email and SMS delivery, respectively. However, you can also
 implement custom solutions using abstract classes provided.
 
+## Content
+
+- [OTP Authentication](#otp-authentication)
+  - [Content](#content)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+    - [EmailOTPAuthentication](#emailotpauthentication)
+      - [Cache Service Configuration](#cache-service-configuration)
+      - [Delivery Service Configuration](#delivery-service-configuration)
+        - [Example](#example)
+    - [SMSOTPAuthentication](#smsotpauthentication)
+      - [Cache Service Configuration](#cache-service-configuration-1)
+      - [Delivery Service Configuration](#delivery-service-configuration-1)
+        - [Example](#example-1)
+  - [Usage](#usage)
+    - [Request OTP code](#request-otp-code)
+      - [Example](#example-2)
+    - [Verify OTP code](#verify-otp-code)
+      - [Example](#example-3)
+
 ## Installation
 
 ```bash
@@ -180,6 +200,17 @@ Below is an example of how to use this package in an `Express.js` application, r
 
 ### Request OTP code
 
+Method signature:
+
+```typescript
+request(to: string, ttl?: number) => Promise<void>;
+```
+
+The cache Time-To-Live (TTL) can be leveraged as a security measure for expiring OTPs. By setting an appropriate TTL,
+you can ensure that OTPs become invalid after a certain period, enhancing the security of your authentication system.
+
+#### Example
+
 ```typescript
 app.post('/api/auth', async (req, resp) => {
     const {
@@ -197,13 +228,21 @@ app.post('/api/auth', async (req, resp) => {
 
 ### Verify OTP code
 
+Method signature:
+
+```typescript
+verify(to: string, otp: string) => Promise<boolean>;
+```
+
+#### Example
+
 ```typescript
 app.post('/api/auth/verify', async (req, resp) => {
     const {
         body: { to, otp },
     } = req;
     if (typeof to !== 'string') {
-        return resp.status(400).send({ error: 'number string is mandatory' });
+        return resp.status(400).send({ error: 'to string is mandatory' });
     }
     if (typeof otp !== 'string') {
         return resp.status(400).send({ error: 'OTP string is mandatory' });
