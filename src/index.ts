@@ -2,8 +2,8 @@ import { type MailOptions, NodemailerDeliveryService, type NodemailerDeliverySer
 import { RedisCacheService, type RedisCacheServiceOptions } from './lib/redis-cache-service';
 import { TwilioDeliveryService, type TwilioOpts } from './lib/twilio-delivery-service';
 
-import { OTPAuthentication } from './lib/otp-authentication';
 import { generate } from 'otp-generator';
+import { OTPAuthentication } from './lib/otp-authentication';
 
 export class EmailOTPAuthentication extends OTPAuthentication {
     constructor(

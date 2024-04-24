@@ -9,7 +9,7 @@
         "build": "tsup",
         "code:fix": "biome check --apply ."
     },
-    "keywords": ["OTP", "redis", "nodemailer"],
+    "keywords": ["OTP", "redis", "nodemailer", "twilio", "SMS", "Email"],
     "author": "Carlos Pinho <cpinho@imaginarycloud.com>",
     "license": "MIT",
     "devDependencies": {
